@@ -62,6 +62,6 @@ export default function Home() {
         <div className="contact-details"><div className="contact-detail"><span>EMAIL</span><a href="mailto:warabatool67@gmail.com">warabatool67@gmail.com ↗</a></div><div className="contact-detail"><span>PHONE / WHATSAPP</span><a href="https://wa.me/923302635081" target="_blank" rel="noreferrer">+92 330 263 5081 ↗</a></div><div className="contact-detail"><span>LOCATION</span><p>Karachi, Pakistan</p></div><div className="contact-detail"><span>CURRICULUM VITAE</span><p className="cv-note">Updated CV will be available here soon. <a href="mailto:warabatool67@gmail.com?subject=Request%20for%20Wara%20Batool%27s%20CV">Request a copy ↗</a></p></div></div></div>
       </section>
     </main>
-    <footer className="site-footer"><div className="section-wrap footer-inner"><a className="wordmark footer-wordmark" href="#home"><span className="wordmark-symbol">W</span><span>Wara Batool<small>PERSONAL PORTFOLIO</small></span></a><p>Thoughtfully curious. Always becoming.</p><a href="#home" className="back-top">BACK TO TOP ↑</a><span className="copyright">© {new Date().getFullYear()} Wara Batool</span></div></footer>
+    <footer className="site-footer"><div className="section-wrap footer-inner"><a className="wordmark footer-wordmark" href="#home"><span className="wordmark-symbol">W</span><span>Wara Batool<small>PERSONAL PORTFOLIO</small></span></a><p>Thoughtfully curious. Always becoming.</p><a href="#home" className="back-top">BACK TO TOP ↑</a><span className="copyright">© 2026 Wara Batool</span></div></footer>
   </div>;
 }
