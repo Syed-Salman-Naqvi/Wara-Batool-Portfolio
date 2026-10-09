@@ -20,3 +20,61 @@
 .hero{min-height:auto;padding-top:65px;padding-bottom:90px;grid-template-columns:1fr;gap:28px}.hero h1{font-size:clamp(60px,16vw,86px);margin:25px 0 20px}.hero-lede{font-size:20px}.hero-meta{margin-top:28px;gap:14px}.hero-art{min-height:430px;margin:0 -4px}.art-card{width:min(310px,76%);height:390px}.portrait-placeholder{height:315px}.floating-note{padding:10px}.note-top{left:0;top:48px}.note-bottom{right:0;bottom:36px}.hero-side-label{right:-7px;font-size:7px}.orbit-one{width:350px;max-width:95vw;height:270px}.orbit-two{width:320px;max-width:85vw;height:420px}.scroll-cue{bottom:27px}.strip-inner{min-height:112px;gap:14px}.strip-label{max-width:60px;line-height:1.7;font-size:8px}.strip-inner p{font-size:19px;line-height:1.35}.strip-mark{display:none}
 .content-section{padding-top:72px;padding-bottom:72px}.about-grid{grid-template-columns:1fr;gap:28px;padding:40px 0}.about-grid h2,.section-title-row h2,.education-grid h2,.contact-grid h2{font-size:clamp(42px,11vw,58px)}.value-cards{grid-template-columns:1fr}.value-cards article{min-height:auto;padding:21px}.value-cards article+article{border-left:0;border-top:1px solid var(--line)}.value-cards h3{margin-top:13px}.section-title-row{flex-direction:column;align-items:flex-start;gap:19px;padding:35px 0}.section-title-row>p{max-width:100%}.experience-item{grid-template-columns:35px 1fr;gap:13px;padding:27px 0}.timeline-number{grid-column:1;grid-row:1;width:31px;height:31px}.experience-date{grid-column:2;grid-row:1;padding-top:8px}.experience-main{grid-column:2}.experience-main h3{font-size:22px}.experience-description{margin-top:15px}.experience-main ul{flex-direction:column;gap:7px}.skills-grid{grid-template-columns:1fr;gap:12px}.skill-card{padding:22px}.skill-card h3{margin:14px 0 18px}.projects-grid{grid-template-columns:1fr;gap:16px}.project-visual{height:220px}.project-content p{min-height:auto}.project-filters{gap:6px}.filter{padding:9px 11px}.education-grid{grid-template-columns:1fr;gap:30px;padding-top:38px}.education-item{grid-template-columns:70px 1fr;gap:12px}.education-item strong{grid-column:2;padding-top:0}.education-item h3{font-size:16px}.quote-inner{min-height:260px}.quote-inner blockquote{font-size:25px}.contact-grid{grid-template-columns:1fr;gap:40px;padding-top:40px}.contact-lede{font-size:12px}.footer-inner{padding-block:25px;min-height:auto;display:grid;grid-template-columns:1fr auto;gap:16px}.footer-inner>p{grid-column:1/-1;grid-row:2;margin:0}.back-top{grid-column:2;grid-row:1}.copyright{grid-column:1/-1}}
 @media(max-width:380px){.section-wrap{width:calc(100% - 32px)}.site-header{width:calc(100% - 32px)}.hero h1{font-size:57px}.hero-art{min-height:390px}.art-card{width:74%;height:355px}.portrait-placeholder{height:280px}.floating-note{font-size:9px}.note-icon{width:24px;height:24px}.strip-inner p{font-size:17px}.project-visual{height:190px}}
+
+
+/* Refined motion system: intentional, lightweight, and accessible */
+.scroll-progress{position:fixed;inset:0 0 auto;z-index:1000;height:3px;background:transparent;pointer-events:none}
+.scroll-progress span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#e4cfaa,var(--gold));box-shadow:0 0 12px rgba(169,128,76,.35);transition:width .08s linear}
+.scroll-reveal{opacity:0;transform:translateY(24px);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1)}
+.scroll-reveal.is-visible{opacity:1;transform:translateY(0)}
+.value-cards article.scroll-reveal:nth-child(2),.skill-card.scroll-reveal:nth-child(2),.project-card.scroll-reveal:nth-child(2){transition-delay:.09s}
+.value-cards article.scroll-reveal:nth-child(3),.skill-card.scroll-reveal:nth-child(3),.project-card.scroll-reveal:nth-child(3){transition-delay:.18s}
+.experience-item.scroll-reveal:nth-child(2),.education-item.scroll-reveal:nth-child(2){transition-delay:.1s}
+.hero-art{isolation:isolate}
+.hero-art:before{content:"";position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(198,163,109,.18),rgba(198,163,109,0) 70%);filter:blur(3px);animation:ambient-glow 7s ease-in-out infinite alternate;z-index:-1}
+.art-spark{position:absolute;z-index:2;color:var(--gold);font-family:Georgia,serif;line-height:1;pointer-events:none;text-shadow:0 0 22px rgba(169,128,76,.25)}
+.spark-one{font-size:27px;top:28px;right:18%;animation:spark-drift 6s ease-in-out infinite}
+.spark-two{font-size:37px;left:14%;bottom:72px;animation:spark-drift 7s ease-in-out -2s infinite reverse}
+.art-card{transform-origin:50% 55%;transition:box-shadow .5s}
+.hero-art:hover .art-card{box-shadow:0 32px 75px var(--shadow);animation:card-breathe 5s ease-in-out infinite}
+.art-orbit{transition:transform .8s ease,border-color .5s}
+.hero-art:hover .orbit-one{transform:rotate(-16deg) scale(1.04);border-color:var(--gold)}
+.hero-art:hover .orbit-two{transform:rotate(44deg) scale(1.02)}
+.floating-note{transition:transform .3s,box-shadow .3s}
+.floating-note:hover{box-shadow:0 18px 35px var(--shadow);transform:translateY(-5px) rotate(-1deg)}
+.button,.header-cta,.filter,.theme-toggle,.contact-socials a,.nav-links a{position:relative}
+.button-primary{overflow:hidden}
+.button-primary:before{content:"";position:absolute;top:-60%;left:-75%;width:45%;height:220%;transform:rotate(22deg);background:rgba(255,255,255,.12);transition:left .55s ease}
+.button-primary:hover:before{left:140%}
+.header-cta{transition:transform .25s,background .25s}
+.header-cta:hover{transform:translateY(-2px);background:var(--gold)}
+.header-cta:hover span{color:#fff}
+.nav-links a:after{content:"";position:absolute;left:0;right:100%;bottom:-7px;height:1px;background:var(--gold);transition:right .25s ease}
+.nav-links a:hover:after{right:0}
+.project-card{transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+.project-card:hover{transform:translateY(-7px);box-shadow:0 20px 42px var(--shadow);border-color:var(--gold)}
+.project-visual:before{content:"";position:absolute;inset:-45%;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.28) 49%,transparent 58%);transform:translateX(-70%) rotate(8deg);transition:transform .8s ease}
+.project-card:hover .project-visual:before{transform:translateX(70%) rotate(8deg)}
+.project-mark{transition:transform .4s ease,letter-spacing .4s ease}
+.project-card:hover .project-mark{transform:scale(1.12) rotate(-5deg);letter-spacing:.04em}
+.skill-pills span{transition:background .25s,color .25s,border-color .25s,transform .25s}
+.skill-pills span:hover{background:var(--gold-light);border-color:var(--gold);color:var(--ink);transform:translateY(-2px)}
+.education-item{transition:padding-left .3s ease}
+.education-item:hover{padding-left:8px}
+.contact-detail>a{width:fit-content;transition:color .2s,transform .2s}
+.contact-detail>a:hover{color:var(--gold);transform:translateX(3px)}
+.contact-socials a{transition:color .2s,border-color .2s}
+.quote-band{position:relative;overflow:hidden}
+.quote-band:before,.quote-band:after{content:"";position:absolute;width:270px;height:270px;border:1px solid rgba(198,163,109,.14);border-radius:50%;pointer-events:none}
+.quote-band:before{left:-130px;top:-130px;box-shadow:0 0 0 25px rgba(198,163,109,.025),0 0 0 50px rgba(198,163,109,.02)}
+.quote-band:after{right:-140px;bottom:-180px;box-shadow:0 0 0 25px rgba(198,163,109,.025),0 0 0 50px rgba(198,163,109,.02)}
+.quote-inner{position:relative;z-index:1}
+.quote-symbol{animation:quote-pulse 4s ease-in-out infinite}
+.section-decor{display:inline-block;transition:transform .5s ease}
+.section-heading:hover .section-decor{transform:rotate(45deg) scale(1.1)}
+@keyframes ambient-glow{from{transform:translate(-12px,8px) scale(.9);opacity:.55}to{transform:translate(15px,-12px) scale(1.12);opacity:1}}
+@keyframes spark-drift{0%,100%{transform:translateY(0) rotate(0deg);opacity:.55}50%{transform:translateY(-13px) rotate(18deg);opacity:1}}
+@keyframes card-breathe{0%,100%{transform:translateY(0) rotate(2deg)}50%{transform:translateY(-5px) rotate(1deg)}}
+@keyframes quote-pulse{0%,100%{transform:translateY(0);opacity:.8}50%{transform:translateY(-4px);opacity:1}}
+@media(max-width:760px){.art-spark.spark-one{right:13%;top:24px}.art-spark.spark-two{left:9%;bottom:54px}.hero-art:hover .art-card{animation:card-arrive 1s cubic-bezier(.2,.7,.2,1) both}.project-card:hover{transform:translateY(-3px)}}
+@media(prefers-reduced-motion:reduce){.scroll-reveal{opacity:1;transform:none;transition:none}.scroll-progress span{transition:none}.hero-art:before,.art-spark,.quote-symbol{animation:none!important}.hero-art:hover .art-card{animation:none}.project-card:hover,.skill-card:hover,.floating-note:hover{transform:none}}
