@@ -22,6 +22,28 @@ export default function Home() {
   const [filter, setFilter] = useState("All");
   const [scrollProgress, setScrollProgress] = useState(0);
   useEffect(() => {
+    const cursor = document.querySelector<HTMLElement>(".classic-cursor");
+    if (!cursor || window.matchMedia("(pointer: coarse)").matches) return;
+    let frame = 0;
+    const moveCursor = (event: MouseEvent) => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        cursor.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`;
+        cursor.classList.add("cursor-active");
+        const target = event.target;
+        cursor.classList.toggle("cursor-hover", target instanceof Element && Boolean(target.closest("a, button, [role='button'], input, textarea, select, summary")));
+      });
+    };
+    const hideCursor = () => cursor.classList.remove("cursor-active");
+    window.addEventListener("mousemove", moveCursor, { passive: true });
+    document.addEventListener("mouseleave", hideCursor);
+    return () => {
+      window.removeEventListener("mousemove", moveCursor);
+      document.removeEventListener("mouseleave", hideCursor);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+  useEffect(() => {
     const updateProgress = () => {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       setScrollProgress(maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0);
@@ -47,6 +69,7 @@ export default function Home() {
   const visibleProjects = projects.filter(p => filter === "All" || p.filter === filter);
   const closeMenu = () => setMenuOpen(false);
   return <div className={dark ? "site dark" : "site"}>
+    <div className="classic-cursor" aria-hidden="true"><span className="cursor-star">✦</span></div>
     <div className="scroll-progress" aria-hidden="true"><span style={{ width: `${scrollProgress}%` }} /></div>
     <div className="announcement"><span className="status-dot" /> OPEN TO PROFESSIONAL OPPORTUNITIES <span className="announcement-line" /> KARACHI, PAKISTAN</div>
     <header className="site-header">
