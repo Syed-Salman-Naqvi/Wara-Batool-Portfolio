@@ -78,3 +78,57 @@
 @keyframes quote-pulse{0%,100%{transform:translateY(0);opacity:.8}50%{transform:translateY(-4px);opacity:1}}
 @media(max-width:760px){.art-spark.spark-one{right:13%;top:24px}.art-spark.spark-two{left:9%;bottom:54px}.hero-art:hover .art-card{animation:card-arrive 1s cubic-bezier(.2,.7,.2,1) both}.project-card:hover{transform:translateY(-3px)}}
 @media(prefers-reduced-motion:reduce){.scroll-reveal{opacity:1;transform:none;transition:none}.scroll-progress span{transition:none}.hero-art:before,.art-spark,.quote-symbol{animation:none!important}.hero-art:hover .art-card{animation:none}.project-card:hover,.skill-card:hover,.floating-note:hover{transform:none}}
+
+
+/* Classic editorial cursor — restrained gold, inspired by an engraved seal */
+@media (pointer: fine) and (hover: hover) {
+  .site, .site a, .site button { cursor: none; }
+  .classic-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1200;
+    width: 34px;
+    height: 34px;
+    margin: -17px 0 0 -17px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(169,128,76,.82);
+    border-radius: 50%;
+    color: var(--gold);
+    pointer-events: none;
+    opacity: 0;
+    transform: translate3d(-100px,-100px,0);
+    transition: opacity .2s ease, width .22s ease, height .22s ease, margin .22s ease, background .22s ease, border-color .22s ease;
+    will-change: transform;
+  }
+  .classic-cursor:before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(169,128,76,.3);
+    border-radius: 50%;
+  }
+  .cursor-star {
+    font-family: Georgia,serif;
+    font-size: 11px;
+    line-height: 1;
+    transition: transform .3s ease, font-size .22s ease;
+  }
+  .classic-cursor.cursor-active { opacity: 1; }
+  .classic-cursor.cursor-hover {
+    width: 48px;
+    height: 48px;
+    margin: -24px 0 0 -24px;
+    background: rgba(169,128,76,.09);
+    border-color: var(--gold);
+  }
+  .classic-cursor.cursor-hover .cursor-star {
+    transform: rotate(45deg);
+    font-size: 14px;
+  }
+}
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .classic-cursor { display: none !important; }
+  .site, .site a, .site button { cursor: auto; }
+}
