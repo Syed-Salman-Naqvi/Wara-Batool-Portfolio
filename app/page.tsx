@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const skills = [
   { title: "Molecular & Laboratory", items: ["PCR", "DNA extraction", "Gel electrophoresis", "Microscopy", "Sample handling", "Culture media preparation"] },
@@ -20,6 +20,30 @@ export default function Home() {
   const [dark, setDark] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [filter, setFilter] = useState("All");
+  const [scrollProgress, setScrollProgress] = useState(0);
+  useEffect(() => {
+    const updateProgress = () => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0);
+    };
+    updateProgress();
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    const targets = document.querySelectorAll(".content-section, .intro-strip, .experience-item, .value-cards article, .skill-card, .project-card, .education-item, .contact-detail, .quote-inner");
+    targets.forEach((el) => el.classList.add("scroll-reveal"));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+    targets.forEach((el) => observer.observe(el));
+    return () => {
+      window.removeEventListener("scroll", updateProgress);
+      observer.disconnect();
+    };
+  }, []);
   const visibleProjects = projects.filter(p => filter === "All" || p.filter === filter);
   const closeMenu = () => setMenuOpen(false);
   return <div className={dark ? "site dark" : "site"}>
@@ -37,7 +61,7 @@ export default function Home() {
           <div className="hero-buttons"><a className="button button-primary" href="#work">Explore my work <span>↗</span></a><a className="text-link" href="#contact">Get in touch <span>→</span></a></div>
           <div className="hero-meta"><span><i /> Karachi, Pakistan</span><span>Biotechnology · Banking · Analysis</span></div>
         </div>
-        <div className="hero-art reveal reveal-delay"><div className="art-orbit orbit-one" /><div className="art-orbit orbit-two" /><div className="art-card"><div className="art-card-top"><span>WB / 2026</span><span>PORTFOLIO NO. 01</span></div><div className="portrait-placeholder"><div className="portrait-halo" /><div className="portrait-initials">W<span>.</span>B</div><div className="portrait-caption">SCIENCE MEETS POSSIBILITY</div></div><div className="art-card-bottom"><span>WARA BATool</span><span>01 — 04</span></div></div>
+        <div className="hero-art reveal reveal-delay"><div className="art-spark spark-one">✳</div><div className="art-spark spark-two">✧</div><div className="art-orbit orbit-one" /><div className="art-orbit orbit-two" /><div className="art-card"><div className="art-card-top"><span>WB / 2026</span><span>PORTFOLIO NO. 01</span></div><div className="portrait-placeholder"><div className="portrait-halo" /><div className="portrait-initials">W<span>.</span>B</div><div className="portrait-caption">SCIENCE MEETS POSSIBILITY</div></div><div className="art-card-bottom"><span>WARA BATool</span><span>01 — 04</span></div></div>
           <div className="floating-note note-top"><span className="note-icon">✳</span><span>Scientific mindset<small>Curious by nature</small></span></div><div className="floating-note note-bottom"><span className="note-icon note-icon-gold">↗</span><span>Always evolving<small>Learning in every role</small></span></div><div className="hero-side-label">ANALYTICAL · ADAPTABLE · AMBITIOUS</div>
         </div><a href="#about" className="scroll-cue"><span className="scroll-line" /> SCROLL TO DISCOVER</a>
       </section>
