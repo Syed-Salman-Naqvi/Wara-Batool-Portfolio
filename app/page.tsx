@@ -47,6 +47,7 @@ export default function Home() {
   const visibleProjects = projects.filter(p => filter === "All" || p.filter === filter);
   const closeMenu = () => setMenuOpen(false);
   return <div className={dark ? "site dark" : "site"}>
+    <div className="scroll-progress" aria-hidden="true"><span style={{ width: `${scrollProgress}%` }} /></div>
     <div className="announcement"><span className="status-dot" /> OPEN TO PROFESSIONAL OPPORTUNITIES <span className="announcement-line" /> KARACHI, PAKISTAN</div>
     <header className="site-header">
       <a className="wordmark" href="#home" onClick={closeMenu}><span className="wordmark-symbol">W</span><span>Wara Batool<small>PERSONAL PORTFOLIO</small></span></a>
