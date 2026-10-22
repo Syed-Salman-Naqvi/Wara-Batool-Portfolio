@@ -135,3 +135,11 @@
 
 /* Hero portrait image */
 .hero-portrait{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block;filter:saturate(.92)}.portrait-image-shade{position:absolute;inset:35% 0 0;background:linear-gradient(180deg,transparent 35%,rgba(21,35,40,.56) 100%);z-index:1;pointer-events:none}.portrait-placeholder:before,.portrait-placeholder:after{z-index:2;pointer-events:none}.portrait-caption{z-index:3;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+
+/* First selected-work card uses the supplied notebook image */
+.project-visual{isolation:isolate}
+.project-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;z-index:0}
+.project-visual-01 .project-visual-label,.project-visual-01 .project-visual-bottom{color:#fff;text-shadow:0 1px 5px rgba(0,0,0,.7)}
+.project-visual-01 .project-mark{color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.45)}
+.project-visual-01:after{z-index:1;border-color:rgba(255,255,255,.45)}
+.project-visual-01:before{z-index:1}
