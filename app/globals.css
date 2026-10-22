@@ -155,3 +155,6 @@
 .project-visual:before{z-index:1}
 
 .button-resume{position:relative;overflow:hidden;gap:18px;border:1px solid var(--gold);background:transparent;color:var(--ink);box-shadow:inset 0 0 0 0 var(--gold);transition:color .35s ease,box-shadow .35s ease,transform .35s ease,border-color .35s ease}.button-resume span{color:var(--gold);font-size:16px;transition:transform .35s ease,color .35s ease}.button-resume:hover{color:#fff;border-color:var(--gold);box-shadow:inset 220px 0 0 0 var(--gold);transform:translateY(-3px)}.button-resume:hover span{color:#fff;transform:translateY(3px)}
+
+.organisation-with-logo{display:flex;align-items:center;gap:10px}.experience-org-logo{width:42px;height:42px;object-fit:contain;flex:0 0 auto;padding:4px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+@media(max-width:640px){.experience-org-logo{width:36px;height:36px}}
