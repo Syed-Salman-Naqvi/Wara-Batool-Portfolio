@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "WARA BATOOL | Biotechnology & Banking",
   description: "The professional portfolio of WARA BATOOL — biotechnology graduate, laboratory intern, and Science & Engineering Associate at UBL in Karachi, Pakistan.",
   keywords: ["WARA BATOOL", "Biotechnology", "Laboratory", "Banking", "Science and Engineering Associate", "Karachi"],
+  icons: { icon: "/icon.svg", shortcut: "/icon.svg", apple: "/icon.svg" },
   openGraph: {
     title: "WARA BATOOL | Science, Service & Continuous Growth",
     description: "A multidisciplinary professional portfolio connecting biotechnology, laboratory experience and banking.",
