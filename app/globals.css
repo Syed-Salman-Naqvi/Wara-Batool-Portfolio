@@ -158,3 +158,37 @@
 
 .organisation-with-logo{display:flex;align-items:center;gap:10px}.experience-org-logo{width:42px;height:42px;object-fit:contain;flex:0 0 auto;padding:4px;border:1px solid var(--line);border-radius:8px;background:var(--card)}
 @media(max-width:640px){.experience-org-logo{width:36px;height:36px}}
+
+/* Classical certificates gallery and full-screen viewer */
+.certificates-section{position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(198,169,107,.09),transparent 42%),var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.certificate-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:42px}
+.certificate-card{min-width:0;text-align:left;padding:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:0 8px 25px var(--shadow);animation:certificate-rise .65s both;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+.certificate-card:hover,.certificate-card:focus-visible{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 20px 38px var(--shadow);outline:none}
+.certificate-frame{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;overflow:hidden;background:var(--paper);border:1px solid var(--line)}
+.certificate-frame:after{content:"";position:absolute;inset:9px;border:1px solid rgba(198,169,107,.55);pointer-events:none;transition:inset .35s ease}
+.certificate-card:hover .certificate-frame:after{inset:5px}
+.certificate-frame img{width:100%;height:100%;object-fit:contain;padding:9px;transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .35s ease}
+.certificate-card:hover .certificate-frame img{transform:scale(1.055);filter:contrast(1.03)}
+.certificate-zoom{position:absolute;right:14px;bottom:14px;z-index:1;width:35px;height:35px;display:grid;place-items:center;background:var(--gold);color:#fff;border-radius:50%;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+.certificate-card:hover .certificate-zoom,.certificate-card:focus-visible .certificate-zoom{opacity:1;transform:translateY(0)}
+.certificate-card-caption{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:16px 5px 5px}
+.certificate-card-caption small{display:block;color:var(--gold);font-size:8px;letter-spacing:.15em;margin-bottom:7px}
+.certificate-card-caption strong{font-family:Georgia,serif;font-size:16px;font-weight:400}
+.certificate-open{width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;color:var(--gold);transition:background .3s,color .3s,border-color .3s}
+.certificate-card:hover .certificate-open{background:var(--gold);border-color:var(--gold);color:#fff}
+@keyframes certificate-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.certificate-lightbox{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;gap:clamp(10px,3vw,40px);padding:65px 22px 28px;background:rgba(13,18,16,.94);backdrop-filter:blur(12px);animation:certificate-fade .22s ease both}
+@keyframes certificate-fade{from{opacity:0}to{opacity:1}}
+.certificate-lightbox-content{width:min(100%,1000px);max-height:100%;display:flex;flex-direction:column;align-items:center;animation:certificate-view-in .3s ease both}
+@keyframes certificate-view-in{from{opacity:0;transform:scale(.975) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.certificate-lightbox-label{color:#d7bd82;font-size:9px;letter-spacing:.2em;text-align:center;margin-bottom:14px}
+.certificate-lightbox-content img{display:block;max-width:100%;max-height:calc(100vh - 160px);width:auto;height:auto;object-fit:contain;border:1px solid rgba(215,189,130,.65);box-shadow:0 25px 80px rgba(0,0,0,.4);background:#fff}
+.certificate-lightbox-caption{display:flex;justify-content:space-between;gap:30px;width:min(100%,900px);padding-top:13px;color:#fff;font-family:Georgia,serif;font-size:14px}
+.certificate-lightbox-caption span:last-child{color:#d7bd82;font-family:Arial,sans-serif;font-size:10px;letter-spacing:.16em}
+.certificate-lightbox-close{position:absolute;top:20px;right:24px;width:44px;height:44px;border:1px solid rgba(215,189,130,.65);border-radius:50%;background:transparent;color:#fff;font-size:30px;line-height:1;cursor:pointer;transition:background .25s,transform .25s}
+.certificate-lightbox-close:hover{background:var(--gold);transform:rotate(90deg)}
+.certificate-lightbox-nav{flex:0 0 auto;width:46px;height:46px;border:1px solid rgba(215,189,130,.65);border-radius:50%;background:rgba(255,255,255,.04);color:#fff;font-size:32px;line-height:1;cursor:pointer;transition:background .25s,border-color .25s,transform .25s}
+.certificate-lightbox-nav:hover{background:var(--gold);border-color:var(--gold);transform:scale(1.06)}
+@media(max-width:900px){.certificate-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.certificate-lightbox{gap:10px;padding-inline:12px}.certificate-lightbox-nav{width:38px;height:38px}}
+@media(max-width:520px){.certificate-grid{gap:11px}.certificate-card{padding:7px}.certificate-frame{aspect-ratio:1/1}.certificate-card-caption{padding:12px 3px 3px}.certificate-card-caption strong{font-size:14px}.certificate-card-caption small{font-size:7px;letter-spacing:.08em}.certificate-lightbox{padding:68px 8px 20px;gap:6px}.certificate-lightbox-nav{width:32px;height:32px;font-size:25px}.certificate-lightbox-content img{max-height:calc(100vh - 175px)}.certificate-lightbox-label{font-size:7px;letter-spacing:.1em}.certificate-lightbox-caption{font-size:12px;padding-top:10px}.certificate-lightbox-close{top:12px;right:12px;width:38px;height:38px}}
+@media(prefers-reduced-motion:reduce){.certificate-card,.certificate-lightbox,.certificate-lightbox-content{animation:none!important;transition:none!important}}
