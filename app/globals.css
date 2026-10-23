@@ -335,3 +335,9 @@ h1,h2,h3,p,a,span,li,strong,small{overflow-wrap:anywhere}
   .intro-strip .strip-inner p{font-size:clamp(10px,3.1vw,13px)}
   .intro-strip .strip-mark{font-size:14px}
 }
+
+
+/* Lift only Wara Batool's name within the mobile portrait card */
+@media(max-width:760px){
+  .art-card-bottom span:first-child{position:relative;top:-10px}
+}
