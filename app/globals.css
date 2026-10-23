@@ -87,7 +87,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1200;
+    z-index: 10001;
     width: 34px;
     height: 34px;
     margin: -17px 0 0 -17px;
