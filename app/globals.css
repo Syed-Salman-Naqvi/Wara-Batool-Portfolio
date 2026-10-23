@@ -290,3 +290,31 @@ h1,h2,h3,p,a,span,li,strong,small{overflow-wrap:anywhere}
   .certificate-card-caption strong{font-size:15px}
   .certificate-card-caption small{font-size:8px}
 }
+
+
+/* Targeted mobile hero fixes: keep floating labels clear of the portrait caption */
+@media(max-width:760px){
+  .intro-strip .strip-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:8px 14px;padding-top:22px;padding-bottom:22px}
+  .intro-strip .strip-label{grid-column:1/-1;white-space:normal;line-height:1.6}
+  .intro-strip .strip-inner p{min-width:0;margin:0;line-height:1.55;overflow-wrap:break-word}
+  .intro-strip .strip-mark{align-self:end}
+  .hero-art{min-height:400px;overflow:visible;padding:20px 0 28px}
+  .art-card{width:min(78%,320px);height:340px;transform:none}
+  .portrait-placeholder{height:280px}
+  .portrait-caption{left:10px;right:10px;bottom:12px;text-align:center;font-size:7px;letter-spacing:.12em;line-height:1.5;white-space:normal}
+  .floating-note{z-index:3;max-width:calc(50% - 12px);min-width:0;white-space:normal;overflow-wrap:break-word;line-height:1.35}
+  .floating-note>span:last-child{min-width:0}
+  .note-top{top:0;left:0}
+  .note-bottom{right:0;bottom:0}
+}
+@media(max-width:420px){
+  .hero-art{min-height:370px;padding:24px 0 28px}
+  .art-card{width:76%;height:315px;padding:10px}
+  .portrait-placeholder{height:259px}
+  .portrait-caption{font-size:6px;letter-spacing:.1em;left:8px;right:8px}
+  .floating-note{max-width:45%;padding:7px;font-size:8px;gap:5px}
+  .floating-note small{font-size:7px;line-height:1.4}
+  .note-top{top:2px;left:0}
+  .note-bottom{right:0;bottom:2px}
+  .intro-strip .strip-inner p{font-size:15px;line-height:1.55}
+}
