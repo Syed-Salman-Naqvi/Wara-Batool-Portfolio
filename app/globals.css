@@ -341,3 +341,13 @@ h1,h2,h3,p,a,span,li,strong,small{overflow-wrap:anywhere}
 @media(max-width:760px){
   .art-card-bottom span:first-child{position:relative;top:-10px}
 }
+
+
+/* Keep the main navigation available while scrolling */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:900;
+  background:var(--paper);
+  box-shadow:0 1px 0 var(--line);
+}
